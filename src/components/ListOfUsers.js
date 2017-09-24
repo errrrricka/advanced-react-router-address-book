@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
+
 
 class ListOfUsers extends Component {
   constructor() {
@@ -17,12 +19,7 @@ class ListOfUsers extends Component {
         return (
           <div key={i}>
             {user.first_name} - {user.last_name}
-            <a href="#" onClick={
-              (e) => {
-                e.preventDefault();
-                this.props.setUser(user);
-              }
-            }> View </a>
+            <Link to={"/user/" + user.id}> View </Link>
           </div>);
       });
     } else { 

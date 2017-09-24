@@ -2,7 +2,9 @@ import React from "react";
 import UserInfo from "./UserInfo";
 
 function UserDetail (props) {
-  const user = props.user;
+  const userId = props.match.params.id;
+  const user = props.users.find(u => u.id == userId) || {};
+
   return (
     <div>
       <UserInfo user={user} />

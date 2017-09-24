@@ -3,7 +3,7 @@ import UserDetail from "../components/UserDetail";
 
 function mapStateToProps(state){
   return {
-    user:state.currentUser
+    users: state.users
   }
 }
                      

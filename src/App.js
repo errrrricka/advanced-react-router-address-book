@@ -5,6 +5,12 @@ import ListOfUsersContainer from "./containers/ListOfUsersContainer";
 import SearchBoxContainer from "./containers/SearchBoxContainer";
 import {connect} from "react-redux";
 import {loadUsers} from "./actions";
+import {
+  BrowserRouter,
+  Route,
+  Switch
+ } from "react-router-dom";
+ 
 
 class App extends Component {
   constructor() {
@@ -16,11 +22,22 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <SearchBoxContainer />
-        <ListOfUsersContainer />
-        <UserDetailContainer />
-      </div>
+      <BrowserRouter>
+       <div>
+          <Switch>
+           <Route path="/users" render={(props) => {
+             return (
+               <div>
+                 <SearchBoxContainer />
+                 <ListOfUsersContainer />
+               </div>
+             );
+           }} />
+           {/* Below is a shortcut for Routes */}
+           <Route path="/user/:id" component={UserDetailContainer} />
+           </Switch>
+       </div>
+     </BrowserRouter>
     );
   }
 }
